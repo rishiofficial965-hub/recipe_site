@@ -1,21 +1,33 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { recipecontext } from "../context/recipeContext.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const Create = () => {
+const Update = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { data, updateRecipe } = useContext(recipecontext);
+
   const [title, settitle] = useState("");
   const [ingredients, setingredients] = useState("");
   const [instruction, setinstruction] = useState("");
   const [mealType, setmeal] = useState("");
   const [file, setfile] = useState("");
 
-  const { setdata } = useContext(recipecontext);
-  const navigate = useNavigate();
+  useEffect(() => {
+    const recipe = data.find((r) => r.id.toString() === id.toString());
+    if (recipe) {
+      settitle(recipe.name || recipe.title);
+      setingredients(recipe.ingredients.join(", "));
+      setinstruction(recipe.instructions.join("\n"));
+      setmeal(recipe.mealType || "");
+      setfile(recipe.image || "");
+    }
+  }, [id, data]);
+
   const SubmitHandler = (e) => {
     e.preventDefault();
-    const copydata = {
-      id: Date.now(),
+    const updatedRecipe = {
       name: title,
       ingredients: ingredients.split(",").map((s) => s.trim()),
       instructions: instruction
@@ -26,21 +38,16 @@ const Create = () => {
       image: file,
     };
 
-    setdata((prev) => [...prev, copydata]);
-    toast.success("New recipe created!");
-
-    settitle("");
-    setingredients("");
-    setinstruction("");
-    setmeal("");
-    setfile("");
+    updateRecipe(Number(id) || id, updatedRecipe);
+    toast.success("Recipe updated successfully!");
     navigate("/recipes");
   };
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3rem] p-10 md:p-16 shadow-2xl">
         <h1 className="text-4xl md:text-5xl font-black text-white mb-10 tracking-tighter">
-          CREATE NEW <span className="text-yellow-400">RECIPE</span>
+          UPDATE <span className="text-yellow-400">RECIPE</span>
         </h1>
 
         <form onSubmit={SubmitHandler} className="flex flex-col gap-6">
@@ -109,16 +116,25 @@ const Create = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full md:w-fit px-12 py-4 bg-yellow-400 text-black font-black uppercase tracking-widest rounded-2xl hover:bg-yellow-300 transition-all active:scale-95 shadow-xl shadow-yellow-400/20 mt-4 cursor-pointer"
-          >
-            Create recipe
-          </button>
+          <div className="flex gap-4 mt-4">
+            <button
+              type="submit"
+              className="flex-1 px-8 py-4 bg-yellow-400 text-black font-black uppercase tracking-widest rounded-2xl hover:bg-yellow-300 transition-all active:scale-95 shadow-xl shadow-yellow-400/20 cursor-pointer"
+            >
+              Update Recipe
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate("/recipes")}
+              className="flex-1 px-8 py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest rounded-2xl hover:bg-white/10 transition-all active:scale-95 cursor-pointer"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>
   );
 };
 
-export default Create;
+export default Update;

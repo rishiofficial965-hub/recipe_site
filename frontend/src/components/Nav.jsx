@@ -1,50 +1,69 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <div className="w-full bg-white/10 backdrop-blur-3xl border border-white/20 flex justify-center gap-8 p-6 rounded-2xl shadow-lg">
-      
-      <NavLink
-        to="/"
-        className={({ isActive }) =>
-          `active:scale-95 rounded-xl px-2 py-1 font-bold 
-          ${isActive ? "bg-amber-500 text-white" : "bg-amber-300"}`
-        }
-      >
-        Home
-      </NavLink>
+    <nav className="w-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-between px-10 py-4 rounded-3xl shadow-2xl mb-8">
+      {/* Logo */}
+      <Link to="/" className="text-2xl font-black tracking-tighter text-white">
+        RESTRO<span className="text-yellow-400">PROJECT</span>
+      </Link>
 
-      <NavLink
-        to="/recipes"
-        className={({ isActive }) =>
-          `active:scale-95 rounded-xl px-2 py-1 font-bold
-          ${isActive ? "bg-amber-500 text-white" : "bg-amber-300"}`
-        }
-      >
-        Recipes
-      </NavLink>
+      {/* Links */}
+      <div className="flex items-center gap-2">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `px-5 py-2 rounded-2xl font-semibold transition-all duration-300 active:scale-95 ${
+              isActive
+                ? "bg-yellow-400 text-black shadow-lg shadow-yellow-400/20"
+                : "text-gray-300 hover:bg-white/10 hover:text-white"
+            }`
+          }
+        >
+          Home
+        </NavLink>
 
-      <NavLink
-        to="/about"
-        className={({ isActive }) =>
-          `active:scale-95 rounded-xl px-2 py-1 font-bold
-          ${isActive ? "bg-amber-500 text-white" : "bg-amber-300"}`
-        }
-      >
-        About
-      </NavLink>
-      <NavLink
-        to="/create"
-        className={({ isActive }) =>
-          `active:scale-95 rounded-xl px-2 py-1 font-bold
-          ${isActive ? "bg-amber-500 text-white" : "bg-amber-300"}`
-        }
-      >
-        Create
-      </NavLink>
+        <NavLink
+          to="/recipes"
+          className={({ isActive }) =>
+            `px-5 py-2 rounded-2xl font-semibold transition-all duration-300 active:scale-95 ${
+              isActive
+                ? "bg-yellow-400 text-black shadow-lg shadow-yellow-400/20"
+                : "text-gray-300 hover:bg-white/10 hover:text-white"
+            }`
+          }
+        >
+          Recipes
+        </NavLink>
 
-    </div>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `px-5 py-2 rounded-2xl font-semibold transition-all duration-300 active:scale-95 ${
+              isActive
+                ? "bg-yellow-400 text-black shadow-lg shadow-yellow-400/20"
+                : "text-gray-300 hover:bg-white/10 hover:text-white"
+            }`
+          }
+        >
+          About
+        </NavLink>
+
+        <NavLink
+          to="/create"
+          className={({ isActive }) =>
+            `px-5 py-2 rounded-2xl font-semibold transition-all duration-300 active:scale-95 ${
+              isActive
+                ? "bg-yellow-400 text-black shadow-lg shadow-yellow-400/20"
+                : "text-gray-300 hover:bg-white/10 hover:text-white"
+            }`
+          }
+        >
+          Create
+        </NavLink>
+      </div>
+    </nav>
   );
 };
 
