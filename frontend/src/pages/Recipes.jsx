@@ -10,7 +10,7 @@ const Recipes = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setdata(data.recipes); // Store recipes in context
+        setdata(data.recipes);
       })
       .catch((err) => console.error(err));
   }
@@ -33,14 +33,12 @@ const Recipes = () => {
             hover:border-yellow-400/30 transition-all duration-500 group
           "
         >
-          {/* Meal Type Tag */}
           <div className="absolute top-6 right-6 z-10">
             <span className="bg-yellow-400 text-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
               {recipe.mealType || "Recipe"}
             </span>
           </div>
 
-          {/* Image Container */}
           <Link to={`/details/${recipe.id}`} className="w-full h-80 overflow-hidden rounded-[1.8rem] block">
             <img
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -49,7 +47,6 @@ const Recipes = () => {
             />
           </Link>
 
-          {/* Content */}
           <div className="flex flex-col gap-3 px-2">
             <Link to={`/details/${recipe.id}`}>
               <h1 className="text-3xl font-black text-white leading-tight tracking-tighter hover:text-yellow-400 transition-colors">
@@ -57,7 +54,6 @@ const Recipes = () => {
               </h1>
             </Link>
 
-            {/* Ingredients Pills */}
             <div className="flex flex-wrap gap-2">
               {recipe.ingredients.slice(0, 3).map((s, i) => (
                 <span
@@ -74,7 +70,6 @@ const Recipes = () => {
               )}
             </div>
 
-            {/* Actions */}
             <div className="flex items-center gap-3 mt-4">
               <Link
                 to={`/update/${recipe.id}`}

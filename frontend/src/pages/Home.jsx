@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div className='w-full min-h-[80vh] flex flex-col items-center justify-center text-white p-6'>
-      {/* Hero Section */}
       <div className='max-w-4xl text-center flex flex-col items-center gap-6'>
         <h1 className='text-6xl md:text-8xl font-bold tracking-tight'>
           Master the <span className='text-yellow-400'>Art</span> of Flavor
@@ -28,7 +27,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Stats/Features Section */}
       <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mt-24 w-full max-w-6xl'>
         <div className='p-8 bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl text-center transition-transform hover:-translate-y-2'>
           <h2 className='text-4xl font-bold text-yellow-400 mb-2'>100+</h2>

@@ -4,12 +4,10 @@ import { NavLink, Link } from "react-router-dom";
 const Nav = () => {
   return (
     <nav className="w-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-between px-10 py-4 rounded-3xl shadow-2xl mb-8">
-      {/* Logo */}
       <Link to="/" className="text-2xl font-black tracking-tighter text-white">
         RESTRO<span className="text-yellow-400">PROJECT</span>
       </Link>
 
-      {/* Links */}
       <div className="flex items-center gap-2">
         <NavLink
           to="/"

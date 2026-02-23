@@ -27,7 +27,6 @@ const Details = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 text-white">
-      {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
         className="mb-10 px-6 py-3 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all flex items-center gap-3 font-bold active:scale-95 cursor-pointer"
@@ -49,7 +48,6 @@ const Details = () => {
       </button>
 
       <div className="flex flex-col lg:flex-row gap-16">
-        {/* Left: Image & Quick Info */}
         <div className="w-full lg:w-1/2 space-y-8">
           <div className="w-full aspect-square md:aspect-video lg:aspect-square overflow-hidden rounded-[3rem] shadow-2xl relative">
             <img
@@ -74,7 +72,6 @@ const Details = () => {
           </div>
         </div>
 
-        {/* Right: Content */}
         <div className="w-full lg:w-1/2 space-y-12">
           <div>
             <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-none mb-6">
@@ -83,7 +80,6 @@ const Details = () => {
             <div className="w-20 h-2 bg-yellow-400 rounded-full"></div>
           </div>
 
-          {/* Ingredients */}
           <section>
             <h2 className="text-3xl font-black mb-6 uppercase tracking-tight flex items-center gap-4">
               <span className="text-yellow-400">01</span> Ingredients
@@ -98,7 +94,6 @@ const Details = () => {
             </div>
           </section>
 
-          {/* Instructions */}
           <section>
             <h2 className="text-3xl font-black mb-6 uppercase tracking-tight flex items-center gap-4">
               <span className="text-yellow-400">02</span> Instructions
